@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Research Agent</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-content">
+                <h1><i class="fas fa-robot"></i> AI Research Agent</h1>
+                <p>Automated research workflows with structured results and explainable traces</p>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Research Form -->
+            <section class="research-form-section">
+                <div class="form-container">
+                    <h2>Start New Research</h2>
+                    <form id="researchForm" class="research-form">
+                        <div class="input-group">
+                            <label for="researchTopic">Research Topic</label>
+                            <input 
+                                type="text" 
+                                id="researchTopic" 
+                                placeholder="Enter your research topic (e.g., 'Machine Learning in Healthcare')"
+                                required
+                            >
+                        </div>
+                        <div class="input-group">
+                            <label for="researchDepth">Research Depth</label>
+                            <select id="researchDepth">
+                                <option value="basic">Basic (5 sources)</option>
+                                <option value="detailed" selected>Detailed (10 sources)</option>
+                                <option value="comprehensive">Comprehensive (15 sources)</option>
+                            </select>
+                        </div>
+                        <button type="submit" class="submit-btn" id="submitBtn">
+                            <i class="fas fa-search"></i>
+                            Start Research
+                        </button>
+                    </form>
+                </div>
+            </section>
+
+            <!-- Progress Section -->
+            <section class="progress-section" id="progressSection" style="display: none;">
+                <div class="progress-container">
+                    <h3>Research Progress</h3>
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="progressFill"></div>
+                    </div>
+                    <div class="progress-steps">
+                        <div class="step" id="step1">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Input Parsing</span>
+                        </div>
+                        <div class="step" id="step2">
+                            <i class="fas fa-clock"></i>
+                            <span>Data Gathering</span>
+                        </div>
+                        <div class="step" id="step3">
+                            <i class="fas fa-clock"></i>
+                            <span>Processing</span>
+                        </div>
+                        <div class="step" id="step4">
+                            <i class="fas fa-clock"></i>
+                            <span>Result Persistence</span>
+                        </div>
+                        <div class="step" id="step5">
+                            <i class="fas fa-clock"></i>
+                            <span>Return Results</span>
+                        </div>
+                    </div>
+                    <div class="current-status" id="currentStatus">
+                        Initializing research workflow...
+                    </div>
+                </div>
+            </section>
+
+            <!-- Results Section -->
+            <section class="results-section" id="resultsSection" style="display: none;">
+                <div class="results-container">
+                    <h3>Research Results</h3>
+                    <div class="results-header">
+                        <div class="research-info">
+                            <h4 id="resultTopic"></h4>
+                            <p id="resultTimestamp"></p>
+                        </div>
+                        <button class="new-research-btn" onclick="resetForm()">
+                            <i class="fas fa-plus"></i>
+                            New Research
+                        </button>
+                    </div>
+                    
+                    <div class="results-tabs">
+                        <button class="tab-btn active" onclick="showTab('summary')">Summary</button>
+                        <button class="tab-btn" onclick="showTab('sources')">Sources</button>
+                        <button class="tab-btn" onclick="showTab('keywords')">Keywords</button>
+                        <button class="tab-btn" onclick="showTab('logs')">Workflow Logs</button>
+                    </div>
+
+                    <div class="tab-content">
+                        <div id="summaryTab" class="tab-pane active">
+                            <div class="summary-content" id="summaryContent"></div>
+                        </div>
+                        
+                        <div id="sourcesTab" class="tab-pane">
+                            <div class="sources-list" id="sourcesList"></div>
+                        </div>
+                        
+                        <div id="keywordsTab" class="tab-pane">
+                            <div class="keywords-container" id="keywordsContainer"></div>
+                        </div>
+                        
+                        <div id="logsTab" class="tab-pane">
+                            <div class="logs-container" id="logsContainer"></div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Research History -->
+            <section class="history-section">
+                <div class="history-container">
+                    <h3>Research History</h3>
+                    <div class="history-list" id="historyList">
+                        <p class="no-history">No previous research found. Start your first research above!</p>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>&copy; 2024 AI Research Agent. Built with ❤️ for automated research workflows.</p>
+        </footer>
+    </div>
+
+    <!-- Loading Overlay -->
+    <div class="loading-overlay" id="loadingOverlay" style="display: none;">
+        <div class="loading-spinner">
+            <i class="fas fa-cog fa-spin"></i>
+            <p>Processing your research request...</p>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
